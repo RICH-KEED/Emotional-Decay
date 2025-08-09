@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyana - Building Web Applications in PHP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid #007bff;
+            background-color: #f8f9fa;
+        }
+        pre {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            overflow-x: auto;
+        }
+        .php-output {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .js-output {
+            background-color: #cce5ff;
+            border: 1px solid #99ccff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Getting Started with PHP</h1>
+            <h2>Web Applications for Everybody (WA4E)</h2>
+            <p><strong>Student:</strong> Riyana</p>
+            <p><strong>Current Date & Time:</strong> <span id="currentDateTime"></span></p>
+            <p><em>Note: This is a GitHub Pages compatible version using JavaScript to simulate PHP functionality</em></p>
+        </div>
+
+        <div class="section">
+            <h3>1. Basic Variables and Output (JavaScript equivalent of PHP)</h3>
+            <p>This section demonstrates basic variable usage and output using JavaScript:</p>
+            
+            <div class="js-output" id="studentInfo">
+                <!-- JavaScript will populate this -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>2. Using the &lt;pre&gt; Tag for Formatted Output</h3>
+            <p>The &lt;pre&gt; tag preserves whitespace and formatting:</p>
+            
+            <pre id="preTagDemo">
+This is inside a pre tag.
+    It preserves    spacing
+        and line breaks.
+            Perfect for code or formatted text!
+            
+<span id="systemInfo"></span>
+            </pre>
+        </div>
+
+        <div class="section">
+            <h3>3. Arrays and Loops (JavaScript Implementation)</h3>
+            <p>Demonstrating arrays and different types of loops using JavaScript:</p>
+            
+            <h4>Programming Languages (using for loop):</h4>
+            <pre id="programmingLanguages">
+            </pre>
+            
+            <h4>Student Grades (using forEach loop):</h4>
+            <div class="js-output" id="studentGrades">
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>4. JavaScript Functions (Equivalent to PHP Functions)</h3>
+            <p>Custom JavaScript function demonstration:</p>
+            
+            <div class="js-output" id="gpaCalculation">
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>5. Conditional Statements and Browser Information</h3>
+            <p>Using JavaScript conditionals and accessing browser/page information:</p>
+            
+            <pre id="browserInfo">
+            </pre>
+        </div>
+
+        <div class="section">
+            <h3>6. Math Operations and String Functions</h3>
+            
+            <h4>Mathematical Operations:</h4>
+            <div class="js-output" id="mathOperations">
+            </div>
+            
+            <h4>String Operations:</h4>
+            <pre id="stringOperations">
+            </pre>
+        </div>
+
+        <div class="section">
+            <h3>7. HTML and JavaScript Integration Example</h3>
+            <p>This section shows seamless integration between HTML and JavaScript:</p>
+            
+            <p>Dynamic list creation with JavaScript:</p>
+            <ul id="colorList">
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>8. Form Processing Simulation</h3>
+            <p>Interactive form that demonstrates data processing:</p>
+            
+            <form id="demoForm" style="margin-bottom: 20px;">
+                <input type="text" id="username" placeholder="Enter username" style="margin: 5px; padding: 8px;">
+                <input type="email" id="email" placeholder="Enter email" style="margin: 5px; padding: 8px;">
+                <button type="submit" style="margin: 5px; padding: 8px 15px; background: #007bff; color: white; border: none; border-radius: 3px;">Submit</button>
+            </form>
+            
+            <div class="js-output" id="formOutput" style="display: none;">
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>9. Original PHP Code Display</h3>
+            <p>Here's what the equivalent PHP code would look like:</p>
+            
+            <pre>
+&lt;?php
+// PHP variables
+$student_name = "Riyana";
+$course = "Building Web Applications in PHP";
+
+// PHP array
+$programming_languages = array("PHP", "JavaScript", "Python", "Java", "C++");
+
+// PHP function
+function calculateGPA($grades) {
+    $total = 0;
+    $count = count($grades);
+    
+    foreach ($grades as $grade) {
+        $total += $grade;
+    }
+    
+    return round($total / $count, 2);
+}
+
+// PHP output
+echo "Student: " . $student_name;
+echo "Course: " . $course;
+?&gt;
+            </pre>
+        </div>
+
+        <footer style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd;">
+            <p><em>Created by Riyana for WA4E Assignment</em></p>
+            <p>This page demonstrates HTML/PHP concepts using JavaScript for GitHub Pages compatibility.</p>
+            <p><small>Page generated on: <span id="footerDateTime"></span></small></p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript equivalent of PHP functionality
+        
+        // 1. Basic variables (equivalent to PHP variables)
+        const studentName = "Riyana";
+        const course = "Building Web Applications in PHP";
+        const university = "University of Michigan";
+        const semester = "Winter 2025";
+        
+        // 2. Arrays (equivalent to PHP arrays)
+        const programmingLanguages = ["PHP", "JavaScript", "Python", "Java", "C++"];
+        const studentGrades = {
+            "PHP Programming": 95,
+            "Database Design": 88,
+            "Web Development": 92,
+            "JavaScript": 90
+        };
+        
+        // 3. Functions (equivalent to PHP functions)
+        function calculateGPA(grades) {
+            const values = Object.values(grades);
+            const total = values.reduce((sum, grade) => sum + grade, 0);
+            return Math.round((total / values.length) * 100) / 100;
+        }
+        
+        function getLetterGrade(numericGrade) {
+            if (numericGrade >= 90) return "A";
+            else if (numericGrade >= 80) return "B";
+            else if (numericGrade >= 70) return "C";
+            else if (numericGrade >= 60) return "D";
+            else return "F";
+        }
+        
+        // 4. Date/time functions
+        function formatDateTime() {
+            return new Date().toLocaleString();
+        }
+        
+        function getGreeting() {
+            const currentHour = new Date().getHours();
+            if (currentHour < 12) return "Good Morning!";
+            else if (currentHour < 17) return "Good Afternoon!";
+            else return "Good Evening!";
+        }
+        
+        // 5. String manipulation functions
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+        
+        // Initialize page content when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update date/time
+            document.getElementById('currentDateTime').textContent = formatDateTime();
+            document.getElementById('footerDateTime').textContent = formatDateTime();
+            
+            // Student info section
+            document.getElementById('studentInfo').innerHTML = `
+                <strong>Student Information:</strong><br>
+                Name: ${studentName}<br>
+                Course: ${course}<br>
+                University: ${university}<br>
+                Semester: ${semester}
+            `;
+            
+            // System/Browser info
+            document.getElementById('systemInfo').innerHTML = `
+Browser: ${navigator.userAgent}
+Platform: ${navigator.platform}
+Language: ${navigator.language}
+URL: ${window.location.href}
+Screen Resolution: ${screen.width}x${screen.height}
+
+Time-based greeting: ${getGreeting()}
+Current hour: ${new Date().getHours()}
+            `;
+            
+            // Programming languages with loop
+            let langOutput = "";
+            for (let i = 0; i < programmingLanguages.length; i++) {
+                langOutput += `${i + 1}. ${programmingLanguages[i]}\n`;
+            }
+            document.getElementById('programmingLanguages').textContent = langOutput;
+            
+            // Student grades with forEach
+            let gradeOutput = "";
+            Object.entries(studentGrades).forEach(([subject, grade]) => {
+                gradeOutput += `<strong>${subject}:</strong> ${grade}%<br>`;
+            });
+            document.getElementById('studentGrades').innerHTML = gradeOutput;
+            
+            // GPA calculation
+            const gpa = calculateGPA(studentGrades);
+            document.getElementById('gpaCalculation').innerHTML = `
+                <strong>Calculated GPA:</strong> ${gpa}<br>
+                <strong>Letter Grade:</strong> ${getLetterGrade(gpa)}
+            `;
+            
+            // Browser info
+            document.getElementById('browserInfo').innerHTML = `
+Browser Information:
+Host: ${window.location.host}
+Pathname: ${window.location.pathname}
+Protocol: ${window.location.protocol}
+User Agent: ${navigator.userAgent}
+
+${getGreeting()}
+Current time: ${new Date().toLocaleTimeString()}
+            `;
+            
+            // Math operations
+            const num1 = 15;
+            const num2 = 8;
+            document.getElementById('mathOperations').innerHTML = `
+                ${num1} + ${num2} = ${num1 + num2}<br>
+                ${num1} - ${num2} = ${num1 - num2}<br>
+                ${num1} × ${num2} = ${num1 * num2}<br>
+                ${num1} ÷ ${num2} = ${Math.round((num1 / num2) * 100) / 100}<br>
+                Square root of ${num1} = ${Math.round(Math.sqrt(num1) * 100) / 100}
+            `;
+            
+            // String operations
+            const text = "Building Web Applications in PHP";
+            document.getElementById('stringOperations').innerHTML = `
+Original text: ${text}
+
+Length: ${text.length} characters
+Uppercase: ${text.toUpperCase()}
+Lowercase: ${text.toLowerCase()}
+Reversed: ${reverseString(text)}
+First 10 characters: ${text.substring(0, 10)}
+            `;
+            
+            // Dynamic color list
+            const colors = ["red", "blue", "green", "orange", "purple"];
+            const colorList = document.getElementById('colorList');
+            colors.forEach(color => {
+                const li = document.createElement('li');
+                li.style.color = color;
+                li.textContent = `This text is ${color}`;
+                colorList.appendChild(li);
+            });
+            
+            // Form handling
+            document.getElementById('demoForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                
+                const output = document.getElementById('formOutput');
+                if (username || email) {
+                    output.innerHTML = `
+                        <strong>Form submitted successfully!</strong><br>
+                        ${username ? `Username: ${username}<br>` : ''}
+                        ${email ? `Email: ${email}<br>` : ''}
+                        <small>Submitted at: ${new Date().toLocaleString()}</small>
+                    `;
+                    output.style.display = 'block';
+                } else {
+                    output.innerHTML = '<strong style="color: red;">Please fill in at least one field!</strong>';
+                    output.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
