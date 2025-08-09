@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyana Rock Paper Scissors Login e9605c3c</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin: 20px 0;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border: 1px solid #f5c6cb;
+            display: none;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+        }
+        .php-note {
+            background-color: #fff9c4;
+            padding: 15px;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Please Log In</h1>
+        <p><strong>Student:</strong> Riyana</p>
+        <p><strong>Assignment:</strong> WA4E Rock Paper Scissors</p>
+        
+        <div class="php-note">
+            <strong>Note:</strong> This is a JavaScript simulation for GitHub Pages. 
+            The actual PHP authentication system is available for server deployment.
+        </div>
+        
+        <div class="instructions">
+            <h4>Login Instructions:</h4>
+            <ul>
+                <li>Enter your email address (must contain @)</li>
+                <li>Use password: <strong>php123</strong></li>
+                <li>Click "Log In" to access the game</li>
+            </ul>
+        </div>
+
+        <div id="errorMessage" class="error"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="who">Email:</label>
+                <input type="email" name="who" id="who" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="pass">Password:</label>
+                <input type="password" name="pass" id="pass" placeholder="Enter password" required>
+            </div>
+            
+            <input type="submit" value="Log In">
+        </form>
+
+        <div class="footer">
+            <p>WA4E Assignment - Building Web Applications in PHP</p>
+            <p>Required ID: e9605c3c</p>
+            <p><em>Use any email with @ and password: php123</em></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript simulation of PHP login functionality
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const who = document.getElementById('who').value.trim();
+            const pass = document.getElementById('pass').value.trim();
+            const errorDiv = document.getElementById('errorMessage');
+            
+            // Clear previous errors
+            errorDiv.style.display = 'none';
+            
+            // Validate input (same logic as PHP)
+            if (who.length < 1 || pass.length < 1) {
+                showError("User name and password are required");
+                return;
+            }
+            
+            // Check for @ sign in email
+            if (who.indexOf('@') === -1) {
+                showError("Email must have an at-sign (@)");
+                return;
+            }
+            
+            // Check password - the correct password is php123
+            if (pass === 'php123') {
+                // Successful login - store in sessionStorage and redirect
+                sessionStorage.setItem('loggedInUser', who);
+                window.location.href = 'game.html';
+            } else {
+                showError("Incorrect password");
+            }
+        });
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+        
+        // Check URL parameters for error messages (simulate PHP flash messages)
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            
+            if (error) {
+                showError(decodeURIComponent(error));
+            }
+        });
+    </script>
+</body>
+</html> 
