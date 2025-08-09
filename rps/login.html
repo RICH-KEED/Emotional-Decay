@@ -88,6 +88,7 @@
             border-radius: 5px;
             margin-bottom: 20px;
         }
+
     </style>
 </head>
 <body>
@@ -159,8 +160,10 @@
             
             // Check password - the correct password is php123
             if (pass === 'php123') {
-                // Successful login - store in sessionStorage and redirect
+                // Successful login - simulate PHP redirect behavior
                 sessionStorage.setItem('loggedInUser', who);
+                
+                // Redirect to game.html (simulate PHP redirect to game.php)
                 window.location.href = 'game.html';
             } else {
                 showError("Incorrect password");
@@ -173,6 +176,8 @@
             errorDiv.style.display = 'block';
         }
         
+
+
         // Check URL parameters for error messages (simulate PHP flash messages)
         window.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
