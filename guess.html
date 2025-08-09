@@ -221,21 +221,74 @@
             window.history.replaceState({}, '', newUrl);
         });
 
-        // Check URL for initial guess parameter (simulate PHP $_GET)
-        window.addEventListener('load', function() {
+        // Process URL parameters immediately (simulate PHP $_GET behavior)
+        function processUrlGuess() {
             const urlParams = new URLSearchParams(window.location.search);
             const initialGuess = urlParams.get('guess');
             
             if (initialGuess) {
                 guessInput.value = initialGuess;
-                // Trigger the form submission to process the initial guess
-                guessForm.dispatchEvent(new Event('submit'));
+                
+                // Process the guess immediately like PHP would
+                const guess = initialGuess.trim();
+                let message = "";
+                let messageClass = "";
+
+                // Update current guess display
+                currentGuessSpan.textContent = guess || 'None';
+
+                // Validate input (same logic as PHP)
+                if (guess.length < 1) {
+                    message = "Your guess is too short";
+                    messageClass = "error";
+                } else if (isNaN(guess) || !Number.isInteger(Number(guess))) {
+                    message = "Your guess is not a number";
+                    messageClass = "error";
+                } else {
+                    const guessNumber = parseInt(guess);
+                    guessCount++;
+                    previousGuesses.push(guessNumber);
+                    
+                    // Update statistics
+                    guessCountSpan.textContent = guessCount;
+                    guessListSpan.textContent = previousGuesses.join(', ');
+                    
+                    if (guessNumber < correctAnswer) {
+                        message = "Your guess is too low";
+                        messageClass = "warning";
+                    } else if (guessNumber > correctAnswer) {
+                        message = "Your guess is too high";
+                        messageClass = "warning";
+                    } else {
+                        message = "Congratulations - You are right";
+                        messageClass = "success";
+                    }
+                }
+
+                // Display message immediately
+                messageDiv.textContent = message;
+                messageDiv.className = "message " + messageClass;
+                messageDiv.style.display = "block";
+
+                // Show/hide try again message
+                if (message && !message.includes("Congratulations")) {
+                    tryAgainDiv.style.display = "block";
+                } else {
+                    tryAgainDiv.style.display = "none";
+                }
             }
+        }
+
+        // Process URL guess when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            processUrlGuess();
         });
 
         // Focus on input field when page loads
         window.addEventListener('load', function() {
-            guessInput.focus();
+            if (!guessInput.value) {
+                guessInput.focus();
+            }
         });
     </script>
 </body>
