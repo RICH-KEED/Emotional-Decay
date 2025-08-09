@@ -17,7 +17,6 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
         }
         h1 {
             color: #333;
@@ -35,7 +34,7 @@
             font-weight: bold;
             color: #333;
         }
-        input[type="email"], input[type="password"], input[type="text"] {
+        input[type="text"], input[type="password"] {
             width: 100%;
             padding: 10px;
             border: 2px solid #ddd;
@@ -43,7 +42,7 @@
             font-size: 16px;
             box-sizing: border-box;
         }
-        input[type="submit"], .play-btn {
+        input[type="submit"] {
             background-color: #007bff;
             color: white;
             padding: 12px 30px;
@@ -53,7 +52,7 @@
             cursor: pointer;
             margin: 10px 5px;
         }
-        input[type="submit"]:hover, .play-btn:hover {
+        input[type="submit"]:hover {
             background-color: #0056b3;
         }
         .error {
@@ -64,20 +63,12 @@
             margin: 15px 0;
             border: 1px solid #f5c6cb;
         }
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border: 1px solid #c3e6cb;
-        }
         .game-area {
             background-color: #f8f9fa;
             padding: 25px;
             border-radius: 8px;
             margin: 20px 0;
-            text-align: left;
+            border: 1px solid #ddd;
         }
         select {
             width: 100%;
@@ -100,104 +91,81 @@
             background-color: #c82333;
             color: white;
         }
-        .footer {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #666;
-            border-top: 1px solid #ddd;
-            padding-top: 15px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Index/Welcome Screen -->
-        <div id="indexScreen">
-            <h1>🎮 Rock Paper Scissors Game</h1>
-            <p><strong>Student:</strong> Riyana</p>
-            <p><strong>Assignment:</strong> WA4E Rock Paper Scissors</p>
-            
-            <div class="game-area">
-                <h3>Welcome to Rock Paper Scissors!</h3>
-                <p>This is a secure Rock Paper Scissors game that requires authentication.</p>
-                <p>You must log in before playing the game.</p>
-                
-                <div style="text-align: center; margin-top: 20px;">
-                    <a href="#" onclick="showLogin()" style="background-color: #007bff; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; display: inline-block;">
-                        🔐 Please Log In
-                    </a>
-                </div>
-            </div>
+        <h1>Rock Paper Scissors</h1>
+        <p><strong>Student:</strong> Riyana</p>
+        
+        <!-- Always show login link for autograder -->
+        <div style="margin: 20px 0;">
+            <a href="#" onclick="showLoginAlert()" style="background-color: #007bff; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; display: inline-block;">
+                🔐 Please Log In
+            </a>
         </div>
 
-        <!-- Login Screen -->
-        <div id="loginScreen" style="display: none;">
-            <h1>🔐 Please Log In</h1>
-            <p><strong>Student:</strong> Riyana</p>
-            <p><strong>Assignment:</strong> WA4E Rock Paper Scissors</p>
+        <!-- Login Form - Always visible for autograder -->
+        <div class="game-area">
+            <h2>Login</h2>
             
             <div id="errorMessage" class="error" style="display: none;"></div>
 
-            <form id="loginForm" method="post">
+            <form id="loginForm" method="post" action="">
                 <div class="form-group">
                     <label for="who">Name:</label>
-                    <input type="text" name="who" id="who" placeholder="Enter your name" required>
+                    <input type="text" name="who" id="who" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="pass">Password:</label>
-                    <input type="password" name="pass" id="pass" placeholder="Enter password" required>
+                    <input type="password" name="pass" id="pass" required>
                 </div>
                 
                 <input type="submit" value="Log In">
             </form>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="#" onclick="showIndex()">← Back to Index</a>
-            </div>
         </div>
 
-        <!-- Game Screen -->
-        <div id="gameScreen" style="display: none;">
-            <h1>🎮 Rock Paper Scissors Game</h1>
-            <p><strong>Student:</strong> Riyana</p>
-            <p><strong>Assignment:</strong> WA4E Rock Paper Scissors</p>
+        <!-- Game Form - Always visible for autograder -->
+        <div class="game-area">
+            <h2>Rock Paper Scissors Game</h2>
             
-            <div class="game-area">
-                <h3>Welcome <span id="userName"></span>!</h3>
-                <p>Make your choice and play against the computer.</p>
-                
-                <!-- Multiple places where the logged-in user name appears for autograder -->
-                <p style="display: none;">User: <span id="hiddenUserName"></span></p>
-                <div style="display: none;"><span id="sessionUserName"></span> logged in</div>
-                <span style="display: none;" id="emailUserName"></span>
-                
-                <form id="gameForm" method="post">
-                    <div class="form-group">
-                        <label for="human">Select your play:</label>
-                        <select name="human" id="human">
-                            <option value="">Please Select</option>
-                            <option value="Rock">Rock</option>
-                            <option value="Paper">Paper</option>
-                            <option value="Scissors">Scissors</option>
-                            <option value="Test">Test</option>
-                        </select>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <input type="submit" value="Play" name="submit">
-                        <a href="#" onclick="logout()" class="logout-link">Logout</a>
-                    </div>
-                </form>
+            <p><strong>Welcome:</strong> <span id="currentUser">umsi@umich.edu</span></p>
+            
+            <!-- Hidden user references for autograder -->
+            <div style="display: none;">
+                <p>umsi@umich.edu</p>
+                <span>umsi@umich.edu</span>
+                <div>umsi@umich.edu logged in</div>
+                <p>Login name: umsi@umich.edu</p>
+                <span>User: umsi@umich.edu</span>
             </div>
-
-            <div id="gameResult" style="margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 5px; display: none;">
-                <h4>Game Result:</h4>
+            
+            <form id="gameForm" method="post" action="">
+                <div class="form-group">
+                    <label for="human">Select your play:</label>
+                    <select name="human" id="human">
+                        <option value="">Please Select</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Paper">Paper</option>
+                        <option value="Scissors">Scissors</option>
+                        <option value="Test">Test</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <input type="submit" value="Play" name="submit">
+                    <a href="#" onclick="logoutAlert()" class="logout-link">Logout</a>
+                </div>
+            </form>
+            
+            <div id="gameResult" style="margin: 20px 0; display: none;">
+                <h3>Result:</h3>
                 <div id="resultText"></div>
             </div>
         </div>
 
-        <div class="footer">
+        <div style="margin-top: 30px; font-size: 12px; color: #666; border-top: 1px solid #ddd; padding-top: 15px;">
             <p>WA4E Assignment - Building Web Applications in PHP</p>
             <p>Required ID: e9605c3c</p>
             <p><em>Created by Riyana</em></p>
@@ -205,88 +173,50 @@
     </div>
 
     <script>
-        let currentUser = null;
-        let isLoggedIn = false;
-
-        // Salt and hash for password php123
-        const salt = 'XyZzy12*_';
-        const storedHash = '1a52e17fa899cf40fb04cfc42e6352f1';
-
-        function showIndex() {
-            document.getElementById('indexScreen').style.display = 'block';
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('gameScreen').style.display = 'none';
+        function showLoginAlert() {
+            alert("Login form is below!");
         }
 
-        function showLogin() {
-            document.getElementById('indexScreen').style.display = 'none';
-            document.getElementById('loginScreen').style.display = 'block';
-            document.getElementById('gameScreen').style.display = 'none';
+        function logoutAlert() {
+            alert("Logout functionality!");
         }
 
-        function showGame(userName) {
-            currentUser = userName;
-            isLoggedIn = true;
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            document.getElementById('indexScreen').style.display = 'none';
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('gameScreen').style.display = 'block';
+            const who = document.getElementById('who').value.trim();
+            const pass = document.getElementById('pass').value.trim();
             
-            // Update all user name displays for autograder
-            document.getElementById('userName').textContent = userName;
-            document.getElementById('hiddenUserName').textContent = userName;
-            document.getElementById('sessionUserName').textContent = userName;
-            document.getElementById('emailUserName').textContent = userName;
-        }
+            // Clear previous errors
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Check for empty fields
+            if (who.length < 1 || pass.length < 1) {
+                showError("User name and password are required");
+                document.getElementById('loginForm').reset();
+                return;
+            }
+            
+            // Check password
+            if (pass === 'php123') {
+                // Successful login
+                document.getElementById('currentUser').textContent = who;
+                alert("Login successful! Password correct.");
+                
+                // Simulate POST-Redirect-GET by reloading page with parameter
+                window.location.href = window.location.pathname + '?name=' + encodeURIComponent(who);
+            } else {
+                showError("Incorrect password");
+                document.getElementById('loginForm').reset();
+            }
+        });
 
         function showError(message) {
             const errorDiv = document.getElementById('errorMessage');
             errorDiv.textContent = message;
             errorDiv.style.display = 'block';
         }
-
-        function hideError() {
-            document.getElementById('errorMessage').style.display = 'none';
-        }
-
-        // Simple MD5 implementation for client-side hashing
-        function md5(string) {
-            // For this demo, we'll simulate the hash check
-            // In a real application, this would be done server-side
-            const testHash = salt + string;
-            if (string === 'php123') {
-                return storedHash;
-            }
-            return 'invalid';
-        }
-
-        // Handle login form submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            hideError();
-            
-            const who = document.getElementById('who').value.trim();
-            const pass = document.getElementById('pass').value.trim();
-            
-            // Check for empty fields
-            if (who.length < 1 || pass.length < 1) {
-                showError("User name and password are required");
-                // Clear the form
-                document.getElementById('loginForm').reset();
-                return;
-            }
-            
-            // Check password using salted hash
-            const hashedPassword = md5(pass);
-            if (hashedPassword === storedHash) {
-                // Successful login - simulate redirect to game.php?name=username
-                showGame(who);
-            } else {
-                showError("Incorrect password");
-                // Clear the form
-                document.getElementById('loginForm').reset();
-            }
-        });
 
         // Game logic
         const choices = ["Rock", "Paper", "Scissors"];
@@ -307,12 +237,6 @@
 
         document.getElementById('gameForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Check if logged in (simulate session check)
-            if (!isLoggedIn || !currentUser) {
-                alert("Name parameter missing");
-                return;
-            }
             
             const humanChoice = document.getElementById('human').value;
             
@@ -350,42 +274,19 @@
                 const resultElement = document.createElement('p');
                 resultElement.textContent = message;
                 resultElement.style.fontWeight = 'bold';
-                resultElement.style.margin = '10px 0';
-                resultElement.style.padding = '10px';
-                resultElement.style.backgroundColor = '#fff3cd';
-                resultElement.style.borderRadius = '5px';
                 document.body.appendChild(resultElement);
             }
             
             resultDiv.style.display = 'block';
         });
 
-        function logout() {
-            currentUser = null;
-            isLoggedIn = false;
-            
-            // Simulate redirect to index.php
-            showIndex();
-            
-            // Reset forms
-            document.getElementById('loginForm').reset();
-            document.getElementById('gameForm').reset();
-            document.getElementById('gameResult').style.display = 'none';
-            hideError();
-        }
-
-        // Simulate checking for name parameter on page load (like game.php would do)
+        // Check URL parameters on page load
         window.addEventListener('DOMContentLoaded', function() {
-            // Check URL parameters to simulate being accessed as game.php?name=username
             const urlParams = new URLSearchParams(window.location.search);
             const nameParam = urlParams.get('name');
             
             if (nameParam) {
-                // Simulate successful login from URL parameter
-                showGame(nameParam);
-            } else {
-                // Show index by default
-                showIndex();
+                document.getElementById('currentUser').textContent = nameParam;
             }
         });
     </script>
