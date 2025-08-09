@@ -62,6 +62,33 @@
         .choice-btn:active {
             transform: translateY(1px);
         }
+        .play-btn {
+            font-size: 18px;
+            padding: 12px 30px;
+            min-width: 120px;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        .choice-label {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            min-width: 100px;
+            display: inline-block;
+            text-align: center;
+        }
+        .choice-label:hover {
+            background-color: #0056b3;
+        }
+        input[type="radio"]:checked + .choice-label {
+            background-color: #28a745;
+        }
         .message {
             padding: 15px;
             margin: 20px 0;
@@ -171,17 +198,28 @@
             <div class="game-area">
                 <h3>Make Your Choice:</h3>
                 
-                <div class="choices">
-                    <button class="choice-btn" onclick="playGame('Rock')">
-                        <span class="emoji">🪨</span><br>Rock
-                    </button>
-                    <button class="choice-btn" onclick="playGame('Paper')">
-                        <span class="emoji">📄</span><br>Paper
-                    </button>
-                    <button class="choice-btn" onclick="playGame('Scissors')">
-                        <span class="emoji">✂️</span><br>Scissors
-                    </button>
-                </div>
+                <form id="gameForm">
+                    <div class="choices">
+                        <input type="radio" name="human" value="Rock" id="rock">
+                        <label for="rock" class="choice-label">
+                            <span class="emoji">🪨</span><br>Rock
+                        </label>
+                        
+                        <input type="radio" name="human" value="Paper" id="paper">
+                        <label for="paper" class="choice-label">
+                            <span class="emoji">📄</span><br>Paper
+                        </label>
+                        
+                        <input type="radio" name="human" value="Scissors" id="scissors">
+                        <label for="scissors" class="choice-label">
+                            <span class="emoji">✂️</span><br>Scissors
+                        </label>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <input type="submit" value="Play" class="choice-btn play-btn">
+                    </div>
+                </form>
             </div>
 
             <div id="message" class="message"></div>
@@ -274,6 +312,22 @@
             // Update game details
             updateGameDetails(humanChoice, computerChoice, result);
         }
+        
+        // Handle form submission
+        function handleGameSubmit(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById('gameForm');
+            const formData = new FormData(form);
+            const humanChoice = formData.get('human');
+            
+            if (!humanChoice) {
+                showMessage("Please select Rock, Paper, or Scissors.", "result-error");
+                return;
+            }
+            
+            playGame(humanChoice);
+        }
 
         function showMessage(message, className) {
             const messageDiv = document.getElementById('message');
@@ -312,6 +366,12 @@
         // Check login status when page loads
         window.addEventListener('DOMContentLoaded', function() {
             checkLogin();
+            
+            // Add event listener for form submission
+            const gameForm = document.getElementById('gameForm');
+            if (gameForm) {
+                gameForm.addEventListener('submit', handleGameSubmit);
+            }
         });
     </script>
 </body>
