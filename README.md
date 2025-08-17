@@ -1,182 +1,116 @@
-# WA4E PHP Assignment - Getting Started with PHP
+# 🎭 Emotion Priority Queue Visualizer
 
-**Student:** Riyana  
-**Course:** Building Web Applications in PHP (WA4E)  
-**Assignment:** Introduction to PHP - Single `index.php` file demonstration
+A simple Python application that visualizes an emotion priority queue with decay functionality. Built with Streamlit for an interactive web interface.
 
-## Project Description
+## Features
 
-This project demonstrates basic PHP programming skills as part of the Web Applications for Everybody (WA4E) course. The application consists of a single `index.php` file that showcases:
+- **Add Emotions**: Input emotion names with custom priorities
+- **Priority Queue Visualization**: View all emotions sorted by priority with timestamps
+- **Decay Mechanism**: Apply decay to reduce all priorities and remove emotions below threshold
+- **Visual Highlighting**: Highest priority emotion is prominently displayed
+- **Configurable Settings**: Adjust decay rate and removal threshold
+- **Real-time Updates**: Interactive interface with immediate visual feedback
 
-- HTML and PHP integration
-- Proper use of the `<pre>` tag for formatted output
-- Switching between PHP and HTML throughout the document
-- Basic PHP programming concepts including variables, arrays, loops, functions, and conditionals
-
-## Features Demonstrated
-
-1. **HTML Structure** - Proper HTML5 document structure with CSS styling
-2. **PHP Variables** - Basic variable declaration and usage
-3. **Pre Tag Usage** - Formatted output preservation using `<pre>` tag
-4. **Arrays and Loops** - Both indexed and associative arrays with for/foreach loops
-5. **Functions** - Custom PHP functions for calculations
-6. **Conditionals** - If/else statements and logical operations
-7. **Server Information** - Accessing $_SERVER superglobal variables
-8. **String/Math Operations** - Built-in PHP functions for text and number manipulation
-9. **HTML/PHP Integration** - Seamless switching between HTML and PHP code
-
-## File Structure
-
-```
-RIYANA-DI-PHP/
-├── index.php          # Main application file
-├── README.md          # This file
-└── .htaccess          # Apache configuration (for deployment)
-```
-
-## Local Setup Instructions
-
-### Prerequisites
-- PHP 7.4 or higher
-- Web server (Apache, Nginx, or PHP built-in server)
-- Text editor or IDE
-
-### Option 1: Using PHP Built-in Server (Easiest)
+## Installation
 
 1. Clone or download this repository
-2. Navigate to the project directory
-3. Start the PHP built-in server:
-   ```bash
-   php -S localhost:8000
-   ```
-4. Open your browser and visit: `http://localhost:8000`
+2. Install the required dependencies:
 
-### Option 2: Using XAMPP/MAMP
-
-1. Install XAMPP (Windows/Linux) or MAMP (Mac)
-2. Copy the project folder to the htdocs directory:
-   - XAMPP: `C:\xampp\htdocs\riyana-php\`
-   - MAMP: `/Applications/MAMP/htdocs/riyana-php/`
-3. Start Apache from the control panel
-4. Visit: `http://localhost/riyana-php/`
-
-### Option 3: Using Apache/Nginx
-
-1. Configure your web server to serve the project directory
-2. Ensure PHP is enabled and working
-3. Access the application through your configured domain/port
-
-## GitHub Deployment
-
-### GitHub Pages (Recommended - No server required!)
-
-Since GitHub Pages doesn't support PHP, I've created `index.html` that uses JavaScript to replicate all the PHP functionality:
-
-1. **Create a GitHub repository:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit - WA4E PHP Assignment"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/RIYANA-DI-PHP.git
-   git push -u origin main
-   ```
-
-2. **Enable GitHub Pages:**
-   - Go to your repository on GitHub
-   - Click Settings → Pages
-   - Select "Deploy from a branch"
-   - Choose "main" branch and "/ (root)" folder
-   - Click Save
-
-3. **Access your site:**
-   - Your application will be available at: `https://YOUR_USERNAME.github.io/RIYANA-DI-PHP/`
-   - The `index.html` file will load automatically
-
-**Note:** The `index.html` version demonstrates the same concepts as the PHP version but runs entirely in the browser using JavaScript.
-
-### For Platforms with PHP Support
-
-#### Heroku Deployment
-
-1. Create a `composer.json` file:
-```json
-{
-    "require": {
-        "php": "^7.4.0"
-    }
-}
-```
-
-2. Create a `Procfile`:
-```
-web: vendor/bin/heroku-php-apache2
-```
-
-3. Deploy to Heroku:
 ```bash
-git init
-git add .
-git commit -m "Initial commit"
-heroku create your-app-name
-git push heroku main
+pip install -r requirements.txt
 ```
 
-#### InfinityFree / 000webhost Deployment
+## Usage
 
-1. Create an account on a free PHP hosting service
-2. Upload files via FTP or file manager
-3. Access your application via the provided domain
+### Running the Application
 
-#### Replit Deployment
+Start the Streamlit application:
 
-1. Create a new PHP Repl on Replit.com
-2. Upload or paste your code
-3. Run the application
-4. Share the generated URL
+```bash
+streamlit run app.py
+```
 
-## Assignment Requirements Met
+The application will open in your web browser at `http://localhost:8501`
 
-✅ **Single `index.php` file** - All code contained in one file  
-✅ **HTML elements** - Proper HTML5 structure with CSS  
-✅ **PHP elements** - Variables, functions, loops, conditionals  
-✅ **Pre tag usage** - Multiple examples of `<pre>` tag for formatted output  
-✅ **HTML/PHP switching** - Seamless integration throughout the document  
-✅ **Basic PHP skills** - Arrays, functions, server variables, string manipulation  
+### How to Use
 
-## Screenshots Required for Submission
+1. **Adding Emotions**:
+   - Enter an emotion name (e.g., "Happiness", "Anxiety", "Excitement")
+   - Set its priority value (higher numbers = higher priority)
+   - Click "Add Emotion"
 
-When submitting this assignment, ensure your screenshots include:
+2. **Viewing the Queue**:
+   - All emotions are displayed in a table sorted by priority
+   - The highest priority emotion is highlighted with 🔥
+   - Timestamps show when each emotion was added
+   - Statistics show total count, highest priority, and average priority
 
-1. **URL bar visible** - Showing the application running on a PHP server
-2. **Complete page view** - All sections of the index.php output
-3. **Developer console** - If required by instructor
-4. **Source code view** - Optional but helpful for grading
+3. **Applying Decay**:
+   - Click "Apply Decay" to reduce all emotion priorities
+   - Emotions below the threshold are automatically removed
+   - Configure decay rate and threshold in the sidebar
 
-**Important:** The application must be running on a PHP server (localhost:8000, localhost/project, etc.) and NOT as a file:// URL.
+4. **Configuration**:
+   - **Decay Rate**: How much priority decreases (e.g., 0.1 = 10% decrease)
+   - **Removal Threshold**: Minimum priority to keep emotions in queue
+   - **Clear All**: Remove all emotions from the queue
 
-## Technologies Used
+### Example Workflow
 
-- **PHP 7.4+** - Server-side scripting
-- **HTML5** - Document structure
-- **CSS3** - Styling and layout
-- **JavaScript** - None (pure PHP/HTML demonstration)
+1. Add "Happiness" with priority 5.0
+2. Add "Stress" with priority 8.0
+3. Add "Excitement" with priority 3.0
+4. Observe that "Stress" is highlighted as highest priority
+5. Click "Apply Decay" to see all priorities decrease
+6. Repeat decay to watch emotions gradually fade away
 
-## Learning Objectives Demonstrated
+## Technical Details
 
-- Understanding of PHP syntax and basic programming concepts
-- Ability to integrate PHP with HTML
-- Knowledge of PHP superglobals ($_SERVER)
-- Understanding of arrays, loops, and functions in PHP
-- Proper use of HTML tags including `<pre>` for formatting
-- Basic web development file structure
+### Max-Heap Implementation
 
-## Contact
+The emotion queue uses Python's `heapq` module with negative priorities to simulate a max-heap:
+- Emotions with higher priorities appear first
+- Efficient O(log n) insertion and extraction
+- Stable sorting using counter for equal priorities
 
-**Student:** Riyana  
-**Course:** WA4E - Building Web Applications in PHP  
-**Institution:** University of Michigan (Coursera)
+### Decay Algorithm
 
----
+```python
+new_priority = current_priority * (1 - decay_rate)
+```
 
-*This project is created as part of the Web Applications for Everybody (WA4E) course assignment requirements.* 
+- Default decay rate: 10% per application
+- Default threshold: 0.1 (emotions below this are removed)
+- All emotions decay simultaneously
+
+### Data Structure
+
+Each emotion contains:
+- **Name**: String identifier
+- **Priority**: Float value (higher = more important)
+- **Timestamp**: When the emotion was added
+- **Heap Priority**: Negative priority for max-heap behavior
+
+## Files
+
+- `app.py`: Main Streamlit application
+- `emotion_queue.py`: EmotionPriorityQueue class implementation
+- `requirements.txt`: Python dependencies
+- `README.md`: This documentation
+
+## Dependencies
+
+- **Streamlit**: Web interface framework
+- **Pandas**: Data manipulation and display
+- **Python Standard Library**: heapq, datetime, typing, dataclasses
+
+## Customization
+
+You can easily modify:
+- Default decay rate and threshold values
+- UI colors and styling
+- Emotion validation rules
+- Additional emotion metadata
+- Export/import functionality
+
+Enjoy exploring the dynamics of emotion priorities! 🎭 
