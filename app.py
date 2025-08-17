@@ -73,7 +73,7 @@ def main():
     
     # Assignment info
     st.markdown("---")
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([0.5, 3, 0.5])
     with col2:
         st.markdown("""
         <div style='text-align: center; background-color: #e8f4f8; padding: 20px; border-radius: 10px; border: 1px solid #1f77b4;'>
