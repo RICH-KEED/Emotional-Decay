@@ -71,16 +71,16 @@ def main():
     st.title("🎭 Emotion Priority Queue Visualizer")
     st.markdown("Track and manage emotions with their priorities. Watch as emotions decay over time!")
     
-    # Student info for professor
+    # Assignment info
     st.markdown("---")
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.markdown("""
-        <div style='text-align: center; background-color: #f0f2f6; padding: 15px; border-radius: 10px; margin: 10px 0; border: 2px solid #1f77b4;'>
-            <h4 style='color: #1f77b4; margin: 0;'>📚 ADSA Case Study Demo</h4>
-            <p style='margin: 5px 0; color: #333; font-weight: bold;'>Student: Abhineet</p>
-            <p style='margin: 5px 0; color: #333; font-weight: bold;'>UID: 24bcs10039</p>
-            <p style='margin: 5px 0; color: #333; font-weight: bold;'>Title: Model emotional decay over time using a queue that decreases priority with time. </p>
+        <div style='text-align: center; background-color: #e8f4f8; padding: 20px; border-radius: 10px; border: 1px solid #1f77b4;'>
+            <p style='color: #333; font-weight: bold; margin: 5px 0;'>Developed by: Abhineet (UID: 24bcs10039)</p>
+            <p style='color: #333; font-weight: bold; margin: 5px 0;'>Course: Advanced Data Structures and Algorithms (ADSA)</p>
+            <p style='color: #333; font-weight: bold; margin: 5px 0;'>Implementation: Max-Heap Priority Queue with Decay Mechanism</p>
+            <p style='color: #555; font-style: italic; margin: 5px 0;'>Demonstrating heap operations, priority management, and interactive visualization</p>
         </div>
         """, unsafe_allow_html=True)
     st.markdown("---")
@@ -222,16 +222,7 @@ def main():
         4. Watch relief and pride persist longer than stress
         """)
 
-    # Footer with student information
-    st.markdown("---")
-    st.markdown("""
-    <div style='text-align: center; background-color: #e8f4f8; padding: 20px; border-radius: 10px; border: 1px solid #1f77b4;'>
-        <p style='color: #333; font-weight: bold; margin: 5px 0;'>Developed by: Abhineet (UID: 24bcs10039)</p>
-        <p style='color: #333; font-weight: bold; margin: 5px 0;'>Course: Advanced Data Structures and Algorithms (ADSA)</p>
-        <p style='color: #333; font-weight: bold; margin: 5px 0;'>Implementation: Max-Heap Priority Queue with Decay Mechanism</p>
-        <p style='color: #555; font-style: italic; margin: 5px 0;'>Demonstrating heap operations, priority management, and interactive visualization</p>
-    </div>
-    """, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main() 
