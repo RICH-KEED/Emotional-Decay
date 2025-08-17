@@ -197,13 +197,14 @@ def main():
     with st.expander("📋 How to Use"):
         st.markdown("""
         **Quick Start:**
-        - Click "🎯 Load Demo Data" to see assignment submission emotions
-        - Demo shows emotions from Abhineet's DSA assignment (UID: 24bcs10039)
+        - **Desktop:** Click "🎯 Load Demo Data" in the left sidebar
+        - **Mobile:** Press arrows (≫) at top right, then "🎯 Load Demo Data"
+        - Demo shows realistic assignment submission emotions
         
         **Adding Emotions:**
-        1. Enter an emotion name (e.g., "Joy", "Anxiety", "Excitement")
-        2. Set its priority (higher = more important)
-        3. Click "Add Emotion"
+        1. Use the "Add New Emotion" form on the main page
+        2. Enter emotion name (e.g., "Joy", "Anxiety", "Excitement")
+        3. Set priority (higher = more important) and click "Add Emotion"
         
         **Applying Decay:**
         - Click "Apply Decay" to reduce all priorities
